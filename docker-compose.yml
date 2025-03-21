@@ -1,0 +1,43 @@
+services:
+  accounts:
+    image: samsoni8888/accounts:v1
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+      - samBank
+
+  cards:
+    image: samsoni8888/cards:v1
+    container_name: cards-ms
+    ports:
+      - "8081:9000"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+      - samBank
+  loans:
+    image: samsoni8888/loans:v1
+    container_name: loans-ms
+    ports:
+      - "8082:8090"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 700M
+    networks:
+      - samBank
+
+#For inter-container communication we use docker network
+networks:
+  samBank:
+    driver: "bridge"
