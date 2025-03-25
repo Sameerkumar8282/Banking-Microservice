@@ -18,12 +18,19 @@ spring:
     import:
       - "application_qa.yml"
       - "application_prod.yml"
+      - "optional:configserver:http://localhost:8071/"
   profiles:
     active:
       - "qa"
 
 build:
   version: "3.0"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 cards:
   message: "Welcome to SamBank cards related local APIs "

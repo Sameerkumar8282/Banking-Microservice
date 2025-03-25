@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
@@ -16,22 +16,20 @@ spring:
     show-sql: true
   config:
     import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-      - "optional:configserver:http://localhost:8071/"
+      - "loans-qa.yml"
+      - "loans-prod.yml"
   profiles:
     active:
-      - "qa"
-
+      - "prod"
 
 build:
   version: "3.0"
 
-accounts:
-  message: "Welcome to sambank accounts related local APIs "
+loans:
+  message: "Welcome to sambank loans related local APIs "
   contactDetails:
-    name: "John Doe - Developer"
-    email: "john@sambank.com"
+    name: "Amaal Grega - Developer"
+    email: "amaal@sambank.com"
   onCallSupport:
-    - (555) 555-1234
-    - (555) 523-1345
+    - (452) 456-2176
+    - (546) 764-8934

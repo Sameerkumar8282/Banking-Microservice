@@ -16,12 +16,11 @@ spring:
     show-sql: true
   config:
     import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-      - "optional:configserver:http://localhost:8071/"
+      - "accounts-qa.yml"
+      - "accounts-prod.yml"
   profiles:
     active:
-      - "qa"
+      - "prod"
 
 
 build:

@@ -18,10 +18,17 @@ spring:
     import:
       - "application_qa.yml"
       - "application_prod.yml"
+      - "optional:configserver:http://localhost:8071/"
   profiles:
     active:
-      - "prod"
+      - "qa"
 
+# Enable actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 build:
   version: "3.0"
