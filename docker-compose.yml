@@ -1,43 +1,50 @@
+version: "3.9"
+
 services:
-  accounts:
-    image: samsoni8888/accounts:v1
-    container_name: accounts-ms
+  accountsdb:
+    image: mysql:latest
+    container_name: accountsdb
     ports:
-      - "8080:8080"
-    restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 700M
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: accountsdb
     networks:
-      - samBank
+      - sambank
+    volumes:
+      - accounts_data:/var/lib/mysql
 
-  cards:
-    image: samsoni8888/cards:v1
-    container_name: cards-ms
+  loansdb:
+    image: mysql:latest
+    container_name: loansdb
     ports:
-      - "8081:9000"
-    restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 700M
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: loansdb
     networks:
-      - samBank
-  loans:
-    image: samsoni8888/loans:v1
-    container_name: loans-ms
-    ports:
-      - "8082:8090"
-    restart: always
-    deploy:
-      resources:
-        limits:
-          memory: 700M
-    networks:
-      - samBank
+      - sambank
+    volumes:
+      - loans_data:/var/lib/mysql
 
-#For inter-container communication we use docker network
+  cardsdb:
+    image: mysql:latest
+    container_name: cardsdb
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cardsdb
+    networks:
+      - sambank
+    volumes:
+      - cards_data:/var/lib/mysql
+
 networks:
-  samBank:
+  sambank:
     driver: "bridge"
+
+volumes:
+  accounts_data:
+  loans_data:
+  cards_data:
