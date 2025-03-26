@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8090
 spring:
   datasource:
     url: jdbc:h2:mem:testdb
@@ -16,27 +16,14 @@ spring:
     show-sql: true
   config:
     import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-      - "optional:configserver:http://localhost:8071/"
+      - "loans-qa.yml"
+      - "loans-prod.yml"
   profiles:
     active:
-      - "qa"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
-
+      - "prod"
 
 build:
   version: "3.0"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 
 loans:
   message: "Welcome to sambank loans related local APIs "

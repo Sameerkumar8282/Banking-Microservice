@@ -16,27 +16,14 @@ spring:
     show-sql: true
   config:
     import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-      - "optional:configserver:http://localhost:8071/"
+      - "cards-qa.yml"
+      - "cards-prod.yml"
   profiles:
     active:
-      - "qa"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
-
+      - "prod"
 
 build:
   version: "3.0"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 
 cards:
   message: "Welcome to SamBank cards related local APIs "

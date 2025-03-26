@@ -16,24 +16,12 @@ spring:
     show-sql: true
   config:
     import:
-      - "application_qa.yml"
-      - "application_prod.yml"
-      - "optional:configserver:http://localhost:8071/"
+      - "accounts-qa.yml"
+      - "accounts-prod.yml"
   profiles:
     active:
-      - "qa"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
+      - "prod"
 
-# Enable actuator endpoints
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 
 build:
   version: "3.0"
