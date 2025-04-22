@@ -27,7 +27,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author Eazy Bytes
+ * @author Sameer
  */
 
 @Tag(
@@ -255,6 +255,7 @@ public class LoansController {
     )
     @GetMapping("/contact-info")
     public ResponseEntity<LoansContactInfoDto> getContactInfo() {
+        logger.debug("Invoked Loans Controller getContactInfo");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(loansContactInfoDto);
