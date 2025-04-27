@@ -50,6 +50,18 @@ services:
     volumes:
       - redis_data:/data
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.2.1
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+    ports:
+      - "9080:8080"
+    networks:
+      - sambank
+    command: start-dev
+    restart: always
+
 networks:
   sambank:
     driver: "bridge"
